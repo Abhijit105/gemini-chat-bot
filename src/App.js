@@ -16,16 +16,19 @@ const App = () => {
 
   const getGeminiResponse = async () => {
     try {
-      const response = await fetch('http://localhost:8080/generate', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          messageUser,
-          history,
-        }),
-      })
+      const response = await fetch(
+        'https://gemini-chat-bot-backend.onrender.com/generate',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            messageUser,
+            history,
+          }),
+        }
+      )
       const data = await response.json()
       const { status, messageGemini, messageError } = data
       console.log(data)
